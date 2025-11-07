@@ -85,39 +85,46 @@ function createCards() {
     })
 }
 
-function openModal(movieId) {
-    const movie = movies.find(m => m.id === movieId)
-    if (!movie) return
-    document.getElementById('modal-img').src = movie.image
-    document.getElementById('modal-img').alt = movie.title
-    document.getElementById('modal-title').textContent = movie.title
-    document.getElementById('modal-description').textContent = movie.description
-
-    const detailsHTML = `
-                <div class="detail-item">
-                    <span class="detail-label">Год выпуска:</span>
-                    <span class="detail-value">${movie.year}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Режиссер:</span>
-                    <span class="detail-value">${movie.director}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Актеры:</span>
-                    <span class="detail-value">${movie.actors}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Рейтинг:</span>
-                    <span class="detail-value"><span class="rating">${movie.rating}/10</span></span>
-                </div>
-            `
-    document.getElementById('modal-details').innerHTML = detailsHTML
-    document.getElementById('modal').style.display = 'block'
-}
-
 function closeModal() {
     document.getElementById('modal').style.display = 'none'
 }
+
+function openModal(movieId) {
+    const movie = movies.find(m => m.id === movieId)
+    if (!movie) return
+
+    // Используем тот же подход с innerHTML как в карточках
+    document.querySelector('.modal-content').innerHTML = `
+        <span class="close-button">&times;</span>
+        <img src="${movie.image}" alt="${movie.title}" class="modal-img">
+        <h2 class="modal-title">${movie.title}</h2>
+        <p class="modal-description">${movie.description}</p>
+        <div class="modal-details">
+            <div class="detail-item">
+                <span class="detail-label">Год выпуска:</span>
+                <span class="detail-value">${movie.year}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Режиссер:</span>
+                <span class="detail-value">${movie.director}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Актеры:</span>
+                <span class="detail-value">${movie.actors}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Рейтинг:</span>
+                <span class="detail-value"><span class="rating">${movie.rating}/10</span></span>
+            </div>
+        </div>
+    `
+
+    // Обновляем обработчик закрытия
+    document.querySelector('.close-button').addEventListener('click', closeModal)
+
+    document.getElementById('modal').style.display = 'block'
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     createCards()
