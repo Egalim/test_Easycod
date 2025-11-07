@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap"
+        rel="stylesheet">
+    <title>Каталог фильмов</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Каталог фильмов</h1>
+            <p class="subtitle">Лучшие фильмы всех времен и народов</p>
+        </header>
+
+        <div class="cards-grid" id="cardsContainer">
+        </div>
+
+        <footer>
+            <p>© 2025 Каталог фильмов. Все права защищены.♥</p>
+        </footer>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-img" src="" alt="" class="modal-img">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <p id="modal-description" class="modal-description"></p>
+            <div id="modal-details" class="modal-details">
+
+            </div>
+        </div>
+    </div>
+    <script src="main.js"> </script>
+</body>
+
+</html>
