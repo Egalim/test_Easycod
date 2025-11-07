@@ -121,3 +121,14 @@ function openModal(movieId) {
     document.getElementById('modal').style.display = 'block'
 }
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    createCards()
+    document.querySelector('.close-button').addEventListener('click', closeModal)
+    window.addEventListener('click', function (event) {
+        const modal = document.getElementById('modal')
+        if (event.target === modal) {
+            closeModal()
+        }
+    })
+}) 
