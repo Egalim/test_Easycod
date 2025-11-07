@@ -93,7 +93,6 @@ function openModal(movieId) {
     const movie = movies.find(m => m.id === movieId)
     if (!movie) return
 
-    // Используем тот же подход с innerHTML как в карточках
     document.querySelector('.modal-content').innerHTML = `
         <span class="close-button">&times;</span>
         <img src="${movie.image}" alt="${movie.title}" class="modal-img">
@@ -118,21 +117,7 @@ function openModal(movieId) {
             </div>
         </div>
     `
-
-    // Обновляем обработчик закрытия
     document.querySelector('.close-button').addEventListener('click', closeModal)
-
     document.getElementById('modal').style.display = 'block'
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    createCards()
-    document.querySelector('.close-button').addEventListener('click', closeModal)
-    window.addEventListener('click', function (event) {
-        const modal = document.getElementById('modal')
-        if (event.target === modal) {
-            closeModal()
-        }
-    })
-}) 
